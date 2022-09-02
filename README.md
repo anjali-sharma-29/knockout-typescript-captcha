@@ -11,6 +11,10 @@ npm install
 npm run serve
 ```
 
+## Demo
+
+![Captch Demo](./Demo/captcha-demo.png)
+
 ## Show me some code
 
 Configure Captcha and define isCaptchaValid() and refreshCaptcha() function
