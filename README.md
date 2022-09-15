@@ -28,16 +28,7 @@ const captchaBinding = {
     init: (elm: any, va: () => any, all: () => any, vm: any) => {
 
         const cmp: any = va();
-        const cp = new Captcha(elm, {
-            width: 100,
-            height: 40,
-            font: 'bold 23px Arial',
-            resourceType: 'aA0',
-            resourceExtra: [],
-            caseSensitive: true,
-            autoRefresh: false,
-            clickRefresh: false
-        });
+        const cp = new Captcha(elm, cmp.captchaConfig);
 
         cmp.isCaptchaValid = () => {
             const isValid = cp.valid(cmp.captchaInput());
@@ -64,18 +55,26 @@ export default captchaBinding;
 Captcha component which uses captcha binding
 
 ```javascript
-import { Observable } from "knockout";
-import * as ko from 'knockout';
-require('knockout.validation');
 class CaptchaComponent  {
         captchaInput: Observable<string>;
         disableFields: Observable<boolean>;
         showSuccessMsg: Observable<boolean>;
+        captchaConfig: any;
         isCaptchaValid: (() => boolean) | undefined;
         refreshCaptcha!: () => void;
 
         constructor(params: any) {
             this.disableFields = params.disable;
+            this.captchaConfig= params.config? params.config :{
+                width: 100,
+                height: 40,
+                font: 'bold 23px Arial',
+                resourceType: 'aA0@',
+                resourceExtra: [],
+                caseSensitive: true,
+                autoRefresh: false,
+                clickRefresh: false
+            };
             this.showSuccessMsg = ko.observable(false);
             this.captchaInput = ko.observable('').extend({
                 validation: {
@@ -96,6 +95,11 @@ class CaptchaComponent  {
             if (this.refreshCaptcha) {
                 this.refreshCaptcha();
             }
+        }
+
+       clearError(): void {
+            let errors = ko.validation.group(this);
+            errors.showAllMessages(false);
         }
     }
 

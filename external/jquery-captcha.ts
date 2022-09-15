@@ -2,9 +2,10 @@ import $ from 'jquery';
 let Captcha;
 (function($) {
     'use strict';
-    const resourceUpper = ['A', 'B', 'C', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z'];
-    const resourceLower = ['a', 'b', 'c', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'w', 'x', 'y', 'z'];
+    const resourceUpper = ['A', 'B', 'C','D' ,'E', 'F', 'G', 'H', 'I','J', 'K', 'L', 'M', 'N','O' ,'P', 'Q', 'R', 'S', 'T','U','V' ,'W', 'X', 'Y', 'Z'];
+    const resourceLower = ['a', 'b', 'c','d' ,'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n','o' ,'p', 'q', 'r', 's', 't', 'u','v','w', 'x', 'y', 'z'];
     const resourceNumber = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const resourceSpecialChar = ['@', '#', '$', '*', '!', '*'];    
 
     Captcha = function(element, options) {
         const self = this;
@@ -13,7 +14,7 @@ let Captcha;
             width: 100,
             height: 40,
             font: 'bold 23px Arial',
-            resourceType: 'aA0',
+            resourceType: 'aA0@',
             resourceExtra: [],
             clickRefresh: true,
             autoRefresh: true,
@@ -36,13 +37,18 @@ let Captcha;
             if (self.options.resourceType.indexOf('0') !== -1) {
                 resource = resource.concat(resourceNumber);
             }
+            if (self.options.resourceType.indexOf('@') !== -1) {
+                resource = resource.concat(resourceSpecialChar);
+            }
         }
         if (self.options.resourceExtra.length > 0) {
             resource = resource.concat(self.options.resourceExtra);
         }
 
         if (resource.length === 0) {
-            resource = resourceUpper.concat(resourceLower).concat(resourceNumber)
+            resource = resourceUpper.concat(resourceLower)
+                                    .concat(resourceNumber)
+                                    .concat(resourceSpecialChar)
         }
         self.resource = resource;
 

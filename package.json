@@ -1,7 +1,7 @@
 {
-    "name": "knockout-typescript",
-    "version": "1.2.0",
-    "description": "An example of using TypeScript and Knockout’s type definitions to create view models, components and bindings that are strongly typed.",
+    "name": "knockout-text-captcha",
+    "version": "1.0.0",
+    "description": "Text captcha implemntation using knockout custom binding.",
     "scripts": {
         "serve": "webpack serve --open",
         "build": "webpack --mode production",
@@ -27,6 +27,6 @@
         "webpack-dev-server": "^3.11.2"
     },
     "keywords": [],
-    "author": "Jon Keeping",
+    "author": "Anjali Sharma",
     "license": "ISC"
 }

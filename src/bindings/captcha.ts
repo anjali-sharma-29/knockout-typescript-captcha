@@ -4,18 +4,8 @@ import Captcha from '../../external/jquery-captcha';
 
 const captchaBinding = {
     init: (elm: any, va: () => any, all: () => any, vm: any) => {
-
         const cmp: any = va();
-        const cp = new Captcha(elm, {
-            width: 100,
-            height: 40,
-            font: 'bold 23px Arial',
-            resourceType: 'aA0',
-            resourceExtra: [],            
-            caseSensitive: true,
-            autoRefresh: false,
-            clickRefresh: false
-        });
+        const cp = new Captcha(elm, cmp.captchaConfig);
        
         cmp.isCaptchaValid = () => {            
             const isValid = cp.valid(cmp.captchaInput());
