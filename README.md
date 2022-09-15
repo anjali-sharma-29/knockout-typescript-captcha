@@ -13,7 +13,7 @@ npm run serve
 
 ## Demo
 
-![Captch Demo](./Demo/captcha-demo.png)
+![Captch Demo](https://github.com/anjali-sharma-29/knockout-typescript-captcha/blob/master/Demo/captcha-demo.png)
 
 ## Show me some code
 
@@ -125,4 +125,8 @@ class CaptchaComponent  {
 ```
 
 Refer External > jquery-captcha.ts file for implementation of captcha
+
+## Reference
+
+I have refered https://github.com/honguangli/jquery-captcha and fixed some issue for refresh function and added some extra fetures to it to implement captcha in knockout.
 
