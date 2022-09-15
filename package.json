@@ -1,6 +1,6 @@
 {
     "name": "knockout-text-captcha",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "description": "Text captcha implemntation using knockout custom binding.",
     "scripts": {
         "serve": "webpack serve --open",
